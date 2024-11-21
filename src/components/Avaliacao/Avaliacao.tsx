@@ -126,7 +126,7 @@ export default function Avaliacao() {
   
 
     return (
-        <section className="flex flex-col items-center min-h-screen">
+        <section className="flex flex-col items-center min-h-screen" id="avaliacao">
             <h2 className="mt-12 mb-5 text-[#101828] font-semibold text-3xl md:text-4xl lg:text-5xl">Avalie-nos</h2>
             <h3 className="mb-12 text-xs text-center text-[#475467] md:text-sm lg:text-base lg:w-1/2">Quer avaliar nossos serviços ou compartilhar sua opinião sobre a ENOVA? Sua experiência é fundamental para nós! Preencha o formulário abaixo e nos ajude a aprimorar nossas soluções de energia verde, construindo um futuro mais sustentável.</h3>
             

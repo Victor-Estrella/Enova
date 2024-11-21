@@ -7,7 +7,7 @@ import Andre from '../../../public/img/andre.jpg';
 
 export default function Integrantes() {
   return (
-    <section className="flex flex-col items-center justify-center my-12 min-h-screen">
+    <section className="flex flex-col items-center justify-center my-12 min-h-screen" id="integrantes">
         <h2 className="mt-12 mb-5 text-[#101828] font-bold text-3xl md:text-4xl lg:text-5xl">Integrantes</h2>
         <h6 className="mb-12 text-sm text-center text-[#475467] md:text-sm lg:text-base">Profissionais dedicados e apaixonados pela energia verde, unidos para transformar o futuro com inovação e sustentabilidade.</h6>
         <div className="flex flex-col lg:flex-row items-center gap-5 lg:justify-evenly w-full">

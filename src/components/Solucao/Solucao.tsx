@@ -6,7 +6,7 @@ import Manutencao from "../../../public/img/aaa.jpg";
 
 export default function Solucao() {
     return (
-        <div className="bg-[#E3FCEC] min-h-screen text-gray-800">
+        <div className="bg-[#E3FCEC] min-h-screen text-gray-800" id="solucao">
             <section id="solutions" className="py-16 px-4 bg-[#E3FCEC]">
                 <h3 className="text-3xl font-bold text-center text-[#2E7D32] mb-12">Nossas Soluções</h3>
                 <div className="flex flex-col space-y-8 md:space-y-10 justify-center">

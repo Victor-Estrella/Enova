@@ -7,7 +7,7 @@ import Geotermica from '../../../public/img/geotermica.webp';
 
 export default function FonteEnergia() {
   return (
-    <section className="flex flex-col items-center my-12 mb-24 min-h-screen">
+    <section className="flex flex-col items-center my-12 mb-24 min-h-screen" id="fontes">
         <h2 className="mt-12 mb-5 text-[#101828] text-center font-bold text-3xl md:text-4xl lg:text-5xl">Fontes de energia renováveis</h2>
         <h3 className="mb-12 text-xs text-center text-[#475467] md:text-sm lg:text-base">Principais Tipos de Fontes de Energia Renováveis e O que são</h3>
         <div className="flex flex-wrap flex-col lg:flex-row items-center gap-5 lg:justify-evenly w-full">

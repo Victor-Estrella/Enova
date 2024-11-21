@@ -10,11 +10,12 @@ export default function Footer() {
             </div>
             <div>
                 <ul className="flex flex-col items-center space-y-2 sm:flex-row sm:space-y-0 sm:space-x-4 lg:space-x-8 mb-6">
-                    <li><a href="#" className="text-[#D1E8FF] hover:text-[#AFCBFF] text-base lg:text-lg">About</a></li>
-                    <li><a href="#" className="text-[#D1E8FF] hover:text-[#AFCBFF] text-base lg:text-lg">Careers</a></li>
-                    <li><a href="#" className="text-[#D1E8FF] hover:text-[#AFCBFF] text-base lg:text-lg">Press</a></li>
-                    <li><a href="#" className="text-[#D1E8FF] hover:text-[#AFCBFF] text-base lg:text-lg">Customer Care</a></li>
-                    <li><a href="#" className="text-[#D1E8FF] hover:text-[#AFCBFF] text-base lg:text-lg">Services</a></li>
+                    <li><a href="#hero" className="text-[#D1E8FF] hover:text-[#AFCBFF] text-base lg:text-lg">Hero</a></li>
+                    <li><a href="#fontes" className="text-[#D1E8FF] hover:text-[#AFCBFF] text-base lg:text-lg">Fontes de Energia</a></li>
+                    <li><a href="#problema" className="text-[#D1E8FF] hover:text-[#AFCBFF] text-base lg:text-lg">Problema</a></li>
+                    <li><a href="#solucao" className="text-[#D1E8FF] hover:text-[#AFCBFF] text-base lg:text-lg">Solução</a></li>
+                    <li><a href="#integrantes" className="text-[#D1E8FF] hover:text-[#AFCBFF] text-base lg:text-lg">Integrantes</a></li>
+                    <li><a href="#avaliacao" className="text-[#D1E8FF] hover:text-[#AFCBFF] text-base lg:text-lg">Avaliacao</a></li>
                 </ul>
             </div>
             <div>
