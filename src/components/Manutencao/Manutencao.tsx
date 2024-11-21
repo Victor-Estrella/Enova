@@ -89,3 +89,29 @@ export default function AnaliseManutencao() {
             y: { title: { display: true, text: "Valores" } },
         },
     };
+
+    return (
+        <>
+            <Header />
+            <div style={{ maxWidth: "900px", margin: "0 auto", padding: "20px", fontFamily: "Arial, sans-serif" }}>
+                <h1 style={{ textAlign: "center" }}>Análise de Manutenção</h1>
+
+                <h2 style={{ textAlign: "center" }}>Manutenções Realizadas</h2>
+                <Bar data={manutencoesData} options={options} />
+
+                <h2 style={{ textAlign: "center" }}>Custo Total de Manutenção</h2>
+                <Line data={custoData} options={options} />
+
+                <h2 style={{ textAlign: "center" }}>Frequência de Manutenção</h2>
+                <Line data={frequenciaData} options={options} />
+
+                <div style={{ background: "#f9f9f9", border: "1px solid #ddd", padding: "15px", marginTop: "20px", borderRadius: "5px" }}>
+                    <h3>Relatório Explicativo</h3>
+                    <p>{relatorio.manutencoes}</p>
+                    <p>{relatorio.custo}</p>
+                    <p>{relatorio.frequencia}</p>
+                </div>
+            </div>
+        </>
+    );
+}
