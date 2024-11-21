@@ -40,3 +40,31 @@ export default function AnaliseManutencao() {
         });
     }, []);
 
+    // Configurações dos gráficos
+    const manutencoesData = {
+        labels: dados.datas,
+        datasets: [
+            {
+                label: "Manutenções Realizadas",
+                data: dados.manutencoes,
+                backgroundColor: "rgba(0, 123, 255, 0.7)",
+                borderColor: "rgba(0, 123, 255, 1)",
+                borderWidth: 1,
+            },
+        ],
+    };
+
+    const custoData = {
+        labels: dados.datas,
+        datasets: [
+            {
+                label: "Custo de Manutenção (R$)",
+                data: dados.custos,
+                borderColor: "green",
+                backgroundColor: "rgba(0, 128, 0, 0.1)",
+                fill: true,
+                tension: 0.3,
+            },
+        ],
+    };
+
