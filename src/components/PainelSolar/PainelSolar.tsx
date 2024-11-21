@@ -1,118 +1,143 @@
 "use client";
 
-import { Bar, Line } from "react-chartjs-2";
-import { Chart as ChartJS, BarElement, LineElement, CategoryScale, LinearScale, Tooltip, Legend, Title } from "chart.js";
-import { useEffect, useState } from "react";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
 import Header from "@/components/Header/Header";
+import { TipoDados } from "@/type";
 
-ChartJS.register(BarElement, LineElement, CategoryScale, LinearScale, Tooltip, Legend, Title);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
-export default function AnaliseManutencao() {
-    const [relatorio, setRelatorio] = useState({
-        manutencoes: "",
-        custo: "",
-        frequencia: "",
-    });
+export default function SolarReport() {
+  const dados = {
+    datas: ["2024-11-01", "2024-11-02", "2024-11-03", "2024-11-04", "2024-11-05"],
+    producoes: [120, 130, 125, 140, 150],
+    consumos: [100, 110, 105, 115, 120],
+    eficiencia: [80, 85, 83, 88, 90],
+  };
 
-    const dados = {
-        datas: ["2024-01", "2024-02", "2024-03", "2024-04", "2024-05"],
-        manutencoes: [10, 12, 8, 15, 13],
-        custos: [1500, 1800, 1200, 2000, 1700],
-        frequencias: [2, 3, 2, 4, 3],
+  // Função para gerar descrições automáticas
+  const gerarRelatorio = (dados: TipoDados) => {
+    const totalProducao = dados.producoes.reduce((a, b) => a + b, 0);
+    const totalConsumo = dados.consumos.reduce((a, b) => a + b, 0);
+    const mediaEficiencia = (
+      dados.eficiencia.reduce((a, b) => a + b, 0) / dados.eficiencia.length
+    ).toFixed(2);
+
+    return {
+      producao: `A produção total de energia solar no período foi de ${totalProducao} kWh, com um aumento gradual, atingindo o pico de ${Math.max(
+        ...dados.producoes
+      )} kWh em ${
+        dados.datas[dados.producoes.indexOf(Math.max(...dados.producoes))]
+      }.`,
+      consumo: `O consumo total de energia no mesmo período foi de ${totalConsumo} kWh. Observa-se que o consumo é consistentemente menor que a produção, garantindo um excedente energético.`,
+      eficiencia: `A eficiência média do sistema solar foi de ${mediaEficiencia}%, com uma melhoria ao longo do período, alcançando o valor máximo de ${Math.max(
+        ...dados.eficiencia
+      )}% em ${
+        dados.datas[dados.eficiencia.indexOf(Math.max(...dados.eficiencia))]
+      }.`,
     };
+  };
 
-    // Gera o relatório com base nos dados
-    useEffect(() => {
-        const totalManutencoes = dados.manutencoes.reduce((a, b) => a + b, 0);
-        const custoTotal = dados.custos.reduce((a, b) => a + b, 0);
-        const frequenciaMedia = (dados.frequencias.reduce((a, b) => a + b, 0) / dados.frequencias.length).toFixed(2);
+  const relatorio = gerarRelatorio(dados);
 
-        setRelatorio({
-            manutencoes: `Um total de ${totalManutencoes} manutenções foram realizadas no período, com o maior número (${Math.max(
-                ...dados.manutencoes
-            )}) em ${dados.datas[dados.manutencoes.indexOf(Math.max(...dados.manutencoes))]}.`,
-            custo: `O custo total de manutenção foi de R$ ${custoTotal.toLocaleString()}, com o maior gasto de R$ ${Math.max(
-                ...dados.custos
-            ).toLocaleString()} em ${dados.datas[dados.custos.indexOf(Math.max(...dados.custos))]}.`,
-            frequencia: `A frequência média de manutenções foi de ${frequenciaMedia} por mês, com o pico de ${Math.max(
-                ...dados.frequencias
-            )} manutenções/mês em ${dados.datas[dados.frequencias.indexOf(Math.max(...dados.frequencias))]}.`,
-        });
-    }, []);
+  // Configuração dos gráficos
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: { position: "top" as const },
+      title: { display: true, text: "Gráfico de Energia Solar" },
+    },
+  };
 
-    // Configurações dos gráficos
-    const manutencoesData = {
-        labels: dados.datas,
-        datasets: [
-            {
-                label: "Manutenções Realizadas",
-                data: dados.manutencoes,
-                backgroundColor: "rgba(0, 123, 255, 0.7)",
-                borderColor: "rgba(0, 123, 255, 1)",
-                borderWidth: 1,
-            },
-        ],
-    };
+  const dataProducao = {
+    labels: dados.datas,
+    datasets: [
+      {
+        label: "Produção Solar (kWh)",
+        data: dados.producoes,
+        borderColor: "green",
+        backgroundColor: "rgba(0, 128, 0, 0.1)",
+        fill: true,
+        tension: 0.3,
+      },
+    ],
+  };
 
-    const custoData = {
-        labels: dados.datas,
-        datasets: [
-            {
-                label: "Custo de Manutenção (R$)",
-                data: dados.custos,
-                borderColor: "green",
-                backgroundColor: "rgba(0, 128, 0, 0.1)",
-                fill: true,
-                tension: 0.3,
-            },
-        ],
-    };
+  const dataConsumo = {
+    labels: dados.datas,
+    datasets: [
+      {
+        label: "Consumo de Energia (kWh)",
+        data: dados.consumos,
+        borderColor: "red",
+        backgroundColor: "rgba(255, 0, 0, 0.1)",
+        fill: true,
+        tension: 0.3,
+      },
+    ],
+  };
 
-    const frequenciaData = {
-        labels: dados.datas,
-        datasets: [
-            {
-                label: "Frequência de Manutenção",
-                data: dados.frequencias,
-                borderColor: "red",
-                backgroundColor: "rgba(255, 0, 0, 0.1)",
-                fill: true,
-                tension: 0.3,
-            },
-        ],
-    };
+  const dataEficiencia = {
+    labels: dados.datas,
+    datasets: [
+      {
+        label: "Eficiência (%)",
+        data: dados.eficiencia,
+        borderColor: "blue",
+        backgroundColor: "rgba(0, 0, 255, 0.1)",
+        fill: true,
+        tension: 0.3,
+      },
+    ],
+  };
 
-    const options = {
-        responsive: true,
-        scales: {
-            x: { title: { display: true, text: "Período" } },
-            y: { title: { display: true, text: "Valores" } },
-        },
-    };
+  return (
+    <>
+        <Header/>
+        <div style={{ padding: "20px", maxWidth: "900px", margin: "0 auto" }}>
+        <h1 style={{ textAlign: "center" }}>Análise de Energia Solar</h1>
 
-    return (
-        <>
-            <Header />
-            <div style={{ maxWidth: "900px", margin: "0 auto", padding: "20px", fontFamily: "Arial, sans-serif" }}>
-                <h1 style={{ textAlign: "center" }}>Análise de Manutenção</h1>
+        <h2 style={{ textAlign: "center" }}>Produção de Energia Solar</h2>
+        <Line options={options} data={dataProducao} />
 
-                <h2 style={{ textAlign: "center" }}>Manutenções Realizadas</h2>
-                <Bar data={manutencoesData} options={options} />
+        <h2 style={{ textAlign: "center" }}>Consumo de Energia</h2>
+        <Line options={options} data={dataConsumo} />
 
-                <h2 style={{ textAlign: "center" }}>Custo Total de Manutenção</h2>
-                <Line data={custoData} options={options} />
+        <h2 style={{ textAlign: "center" }}>Eficiência do Sistema Solar</h2>
+        <Line options={options} data={dataEficiencia} />
 
-                <h2 style={{ textAlign: "center" }}>Frequência de Manutenção</h2>
-                <Line data={frequenciaData} options={options} />
-
-                <div style={{ background: "#f9f9f9", border: "1px solid #ddd", padding: "15px", marginTop: "20px", borderRadius: "5px" }}>
-                    <h3>Relatório Explicativo</h3>
-                    <p>{relatorio.manutencoes}</p>
-                    <p>{relatorio.custo}</p>
-                    <p>{relatorio.frequencia}</p>
-                </div>
-            </div>
-        </>
-    );
+        <div
+            style={{
+            background: "#f9f9f9",
+            border: "1px solid #ddd",
+            padding: "15px",
+            marginTop: "20px",
+            borderRadius: "5px",
+            }}
+            >
+            <h3 style={{ marginTop: 0 }}>Relatório Explicativo</h3>
+            <p>{relatorio.producao}</p>
+            <p>{relatorio.consumo}</p>
+            <p>{relatorio.eficiencia}</p>
+        </div>
+        </div>
+    </>
+  );
 }
-
