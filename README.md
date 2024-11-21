@@ -40,7 +40,7 @@ Tornar-se uma plataforma líder em gerenciamento de energia renovável, capacita
 https://github.com/EnovaGS/Front-End
 
 ## Link do repositório de Java
-
+https://github.com/lecristina/GSJAVA2
 
 ## Link do repositório de Python
 https://github.com/EnovaGS/Python
@@ -59,7 +59,7 @@ git clone https://github.com/EnovaGS/Front-End.git
 
 - Clone o repositório da API (Java):
 ```bash
-git clone 
+git clone https://github.com/lecristina/GSJAVA2.git
 ```
 
 ## Rodando o Front-End
@@ -85,7 +85,7 @@ npm run dev
 1. Navegue até o diretório da API:
 
 ```bash
-cd 
+cd GSJAVA2 
 ```
 
 2. Abra o projeto no IntelliJ
