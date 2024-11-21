@@ -88,3 +88,29 @@ export default function EnergiaEolica() {
         },
     };
 
+    return (
+        <>
+            <Header/>
+            <div style={{ maxWidth: "900px", margin: "0 auto", padding: "20px", fontFamily: "Arial, sans-serif" }}>
+                <h1 style={{ textAlign: "center" }}>Análise de Energia Eólica</h1>
+
+                <h2 style={{ textAlign: "center" }}>Produção de Energia Eólica</h2>
+                <Line data={producaoData} options={options} />
+
+                <h2 style={{ textAlign: "center" }}>Consumo de Energia</h2>
+                <Line data={consumoData} options={options} />
+
+                <h2 style={{ textAlign: "center" }}>Eficiência do Sistema Eólico</h2>
+                <Line data={eficienciaData} options={options} />
+
+                <div style={{ background: "#f9f9f9", border: "1px solid #ddd", padding: "15px", marginTop: "20px", borderRadius: "5px" }}>
+                    <h3>Relatório Explicativo</h3>
+                    <p>{relatorio.producao}</p>
+                    <p>{relatorio.consumo}</p>
+                    <p>{relatorio.eficiencia}</p>
+                </div>
+            </div>
+        </>
+    );
+}
+
