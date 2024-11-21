@@ -92,7 +92,7 @@ export default function AnaliseManutencao() {
 
     return (
         <>
-            <Header/>
+            <Header />
             <div style={{ maxWidth: "900px", margin: "0 auto", padding: "20px", fontFamily: "Arial, sans-serif" }}>
                 <h1 style={{ textAlign: "center" }}>Análise de Manutenção</h1>
 
