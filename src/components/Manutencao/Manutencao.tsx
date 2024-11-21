@@ -21,4 +21,21 @@ export default function AnaliseManutencao() {
         frequencias: [2, 3, 2, 4, 3],
     };
 
- 
+    // Gera o relatório com base nos dados
+    useEffect(() => {
+        const totalManutencoes = dados.manutencoes.reduce((a, b) => a + b, 0);
+        const custoTotal = dados.custos.reduce((a, b) => a + b, 0);
+        const frequenciaMedia = (dados.frequencias.reduce((a, b) => a + b, 0) / dados.frequencias.length).toFixed(2);
+
+        setRelatorio({
+            manutencoes: `Um total de ${totalManutencoes} manutenções foram realizadas no período, com o maior número (${Math.max(
+                ...dados.manutencoes
+            )}) em ${dados.datas[dados.manutencoes.indexOf(Math.max(...dados.manutencoes))]}.`,
+            custo: `O custo total de manutenção foi de R$ ${custoTotal.toLocaleString()}, com o maior gasto de R$ ${Math.max(
+                ...dados.custos
+            ).toLocaleString()} em ${dados.datas[dados.custos.indexOf(Math.max(...dados.custos))]}.`,
+            frequencia: `A frequência média de manutenções foi de ${frequenciaMedia} por mês, com o pico de ${Math.max(
+                ...dados.frequencias
+            )} manutenções/mês em ${dados.datas[dados.frequencias.indexOf(Math.max(...dados.frequencias))]}.`,
+        });
+    }, []); 
