@@ -1,11 +1,8 @@
 "use client";
+import { Props } from "@/type";
 import { useState } from "react";
 
-interface ManutencaoProps {
-    idEnergia: number;
-}
-
-export default function Manutencao({ idEnergia }: ManutencaoProps) {
+export default function ManutencaoForm({ idEnergia }: Props) {
     const [ultimaManutencao, setUltimaManutencao] = useState<string>("");
     const [tipoManutencao, setTipoManutencao] = useState<string>("");
     const [mensagem, setMensagem] = useState<string | null>(null);

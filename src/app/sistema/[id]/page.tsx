@@ -1,10 +1,10 @@
 "use client";
 import Header from "@/components/Header/Header";
 import Eficiencia from "@/components/Eficiencia/Eficiencia";
-import Manutencao from "@/components/Manutencao/Manutencao";
 import { TipoEnergia, TipoEficiencia, TipoManutencao } from "@/type";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import ManutencaoForm from "@/components/ManutencaoForm/ManutencaoForm";
 
 export default function SistemaDetalhes() {
     const { id } = useParams();
@@ -107,7 +107,7 @@ export default function SistemaDetalhes() {
                 )}
 
                 {/* Formulário de manutenção */}
-                <Manutencao idEnergia={parseInt(id as string, 10)} />
+                <ManutencaoForm idEnergia={parseInt(id as string, 10)} />
             </div>
         </>
     );
