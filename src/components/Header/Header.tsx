@@ -14,7 +14,6 @@ export default function Header() {
                 <ul className="flex space-x-4 lg:space-x-8">
                     <li><a href="/" className="text-white hover:text-gray-400 outline-none text-base lg:text-lg">Home</a></li>
                     <li><Link href="/sistema" className="text-white hover:text-gray-400 outline-none text-base lg:text-lg">Sistema</Link></li>
-                    <li className="hidden md:block "><a href="#" className="text-white hover:text-gray-400 outline-none text-base lg:text-lg">Contato</a></li>
                     <li><Link href="/cadastro" className="text-white bg-[#126e63fa] p-2 rounded-xl border-2 border-[#052c28fa] hover:text-gray-400 outline-none text-base text-nowrap lg:text-lg">Cadastre-se</Link></li>
                 </ul>
             </div>
