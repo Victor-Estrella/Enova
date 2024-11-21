@@ -38,3 +38,31 @@ export default function EnergiaEolica() {
         });
     }, []);
 
+    const producaoData = {
+        labels: dados.datas,
+        datasets: [
+            {
+                label: "Produção Eólica (kWh)",
+                data: dados.producoes,
+                borderColor: "green",
+                backgroundColor: "rgba(0, 128, 0, 0.1)",
+                fill: true,
+                tension: 0.3,
+            },
+        ],
+    };
+
+    const consumoData = {
+        labels: dados.datas,
+        datasets: [
+            {
+                label: "Consumo de Energia (kWh)",
+                data: dados.consumos,
+                borderColor: "red",
+                backgroundColor: "rgba(255, 0, 0, 0.1)",
+                fill: true,
+                tension: 0.3,
+            },
+        ],
+    };
+
