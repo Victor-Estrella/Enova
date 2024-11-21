@@ -1,18 +1,14 @@
 "use client";
+import { Props } from "@/type";
 import { useState } from "react";
 
-interface EficienciaProps {
-  idEnergia: number;
-}
-
-export default function Eficiencia({ idEnergia }: EficienciaProps) {
+export default function Eficiencia({ idEnergia }: Props) {
   const [producao, setProducao] = useState<number | "">("");
   const [consumo, setConsumo] = useState<number | "">("");
   const [mensagem, setMensagem] = useState("");
 
   const salvarEficiencia = async (event: React.FormEvent) => {
-    event.preventDefault(); // Previne o comportamento padrão do formulário
-  
+    event.preventDefault();
     if (!producao || !consumo) {
       setMensagem("Por favor, preencha todos os campos.");
       return;
