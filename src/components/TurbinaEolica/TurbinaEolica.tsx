@@ -66,3 +66,25 @@ export default function EnergiaEolica() {
         ],
     };
 
+    const eficienciaData = {
+        labels: dados.datas,
+        datasets: [
+            {
+                label: "Eficiência (%)",
+                data: dados.eficiencia,
+                borderColor: "blue",
+                backgroundColor: "rgba(0, 0, 255, 0.1)",
+                fill: true,
+                tension: 0.3,
+            },
+        ],
+    };
+
+    const options = {
+        responsive: true,
+        scales: {
+            x: { title: { display: true, text: "Data" } },
+            y: { title: { display: true, text: "Valores" } },
+        },
+    };
+
