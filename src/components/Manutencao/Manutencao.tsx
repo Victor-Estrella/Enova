@@ -67,3 +67,25 @@ export default function AnaliseManutencao() {
             },
         ],
     };
+
+    const frequenciaData = {
+        labels: dados.datas,
+        datasets: [
+            {
+                label: "Frequência de Manutenção",
+                data: dados.frequencias,
+                borderColor: "red",
+                backgroundColor: "rgba(255, 0, 0, 0.1)",
+                fill: true,
+                tension: 0.3,
+            },
+        ],
+    };
+
+    const options = {
+        responsive: true,
+        scales: {
+            x: { title: { display: true, text: "Período" } },
+            y: { title: { display: true, text: "Valores" } },
+        },
+    };
