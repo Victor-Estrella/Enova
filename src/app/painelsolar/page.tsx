@@ -1,7 +1,7 @@
 "use client";
-import TurbinaEolica from "@/components/TurbinaEolica/TurbinaEolica";
+import PainelSolar from "@/components/PainelSolar/PainelSolar";
 
 export default function EnergiaEolica() {
   return (
-    <TurbinaEolica />
+    <PainelSolar />
   )}
