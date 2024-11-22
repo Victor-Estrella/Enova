@@ -42,3 +42,10 @@ export type TipoDados = {
 export type Props = {
     idEnergia: number;
 };
+
+export interface PythonDados {
+    producoes: number[];
+    consumos: number[];
+    eficiencia: number[];
+    datas: string[];
+}

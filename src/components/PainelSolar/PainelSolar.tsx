@@ -12,7 +12,8 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import Header from "@/components/Header/Header";
-import { TipoDados } from "@/type";
+import { useEffect, useState } from "react";
+import { PythonDados } from "@/type";
 
 ChartJS.register(
   CategoryScale,
@@ -25,15 +26,23 @@ ChartJS.register(
 );
 
 export default function SolarReport() {
-  const dados = {
-    datas: ["2024-11-01", "2024-11-02", "2024-11-03", "2024-11-04", "2024-11-05"],
-    producoes: [120, 130, 125, 140, 150],
-    consumos: [100, 110, 105, 115, 120],
-    eficiencia: [80, 85, 83, 88, 90],
-  };
+
+  const [dados, setDados] = useState<PythonDados | null>(null);
+
+  useEffect(() => {
+    // Busca os dados da API Flask
+    fetch("http://localhost:5000/solar")
+      .then((response) => response.json())
+      .then((data) => setDados(data))
+      .catch((error) => console.error("Erro ao buscar dados:", error));
+  }, []);
+
+  if (!dados) {
+    return <p>Carregando dados...</p>;
+  }
 
   // Função para gerar descrições automáticas
-  const gerarRelatorio = (dados: TipoDados) => {
+  const gerarRelatorio = (dados: PythonDados) => {
     const totalProducao = dados.producoes.reduce((a, b) => a + b, 0);
     const totalConsumo = dados.consumos.reduce((a, b) => a + b, 0);
     const mediaEficiencia = (
@@ -110,8 +119,8 @@ export default function SolarReport() {
 
   return (
     <>
-        <Header/>
-        <div style={{ padding: "20px", maxWidth: "900px", margin: "0 auto" }}>
+      <Header />
+      <div style={{ padding: "20px", maxWidth: "900px", margin: "0 auto" }}>
         <h1 style={{ textAlign: "center" }}>Análise de Energia Solar</h1>
 
         <h2 style={{ textAlign: "center" }}>Produção de Energia Solar</h2>
@@ -124,20 +133,20 @@ export default function SolarReport() {
         <Line options={options} data={dataEficiencia} />
 
         <div
-            style={{
+          style={{
             background: "#f9f9f9",
             border: "1px solid #ddd",
             padding: "15px",
             marginTop: "20px",
             borderRadius: "5px",
-            }}
-            >
-            <h3 style={{ marginTop: 0 }}>Relatório Explicativo</h3>
-            <p>{relatorio.producao}</p>
-            <p>{relatorio.consumo}</p>
-            <p>{relatorio.eficiencia}</p>
+          }}
+        >
+          <h3 style={{ marginTop: 0 }}>Relatório Explicativo</h3>
+          <p>{relatorio.producao}</p>
+          <p>{relatorio.consumo}</p>
+          <p>{relatorio.eficiencia}</p>
         </div>
-        </div>
+      </div>
     </>
   );
 }
