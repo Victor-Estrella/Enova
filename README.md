@@ -34,7 +34,7 @@ Tornar-se uma plataforma líder em gerenciamento de energia renovável, capacita
 - 👤 Victor Henrique Estrella Carracci RM:556206
 
 ## Link do vídeo
-
+https://youtu.be/D9PVxbPv2c0
 
 ## Link do repositório
 https://github.com/EnovaGS/Front-End
@@ -46,7 +46,7 @@ https://github.com/lecristina/GSJAVA2
 https://github.com/EnovaGS/Python
 
 ## Link do site
-
+https://enova-omega.vercel.app/
 
 
 # Como Rodar o Código 🚀
@@ -60,6 +60,11 @@ git clone https://github.com/EnovaGS/Front-End.git
 - Clone o repositório da API (Java):
 ```bash
 git clone https://github.com/lecristina/GSJAVA2.git
+```
+
+- Clone o repositório da API (Python):
+```bash
+git clone https://github.com/EnovaGS/Python.git
 ```
 
 ## Rodando o Front-End
@@ -93,3 +98,17 @@ cd GSJAVA2
 3. Compile e execute a aplicação.
 
 4. A API estará rodando no endereço: http://localhost:8080
+
+## Rodando a API (Python)
+1. Navegue até o diretório da API:
+
+```bash
+cd Python 
+```
+
+2. Execute a aplicação.
+```bash
+python app.py 
+```
+
+3. A API estará rodando no endereço: http://localhost:5000
