@@ -32,7 +32,8 @@ export default function Cadastro() {
 
     if (validarRegistro()) {
       try {
-  const response = await fetch("http://enova-java:8080/usuario", {
+        const apiJava = process.env.NEXT_PUBLIC_API_JAVA || "http://localhost:8080";
+        const response = await fetch(`${apiJava}/usuario`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
