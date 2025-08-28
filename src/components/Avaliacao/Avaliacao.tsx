@@ -15,7 +15,7 @@ export default function Avaliacao() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8080/avaliacao");
+  const response = await fetch("http://0.0.0.0:8080/avaliacao");
         const result = await response.json();
         setLista(result);
       } catch (error) {
@@ -56,7 +56,7 @@ export default function Avaliacao() {
 
     try {
       if (editandoId !== null) {
-        await fetch(`http://localhost:8080/avaliacao/${editandoId}`, {
+  await fetch(`http://0.0.0.0:8080/avaliacao/${editandoId}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newAvaliacao),
@@ -69,7 +69,7 @@ export default function Avaliacao() {
           )
         );
       } else {
-        const response = await fetch("http://localhost:8080/avaliacao", {
+  const response = await fetch("http://0.0.0.0:8080/avaliacao", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newAvaliacao),
@@ -93,7 +93,7 @@ export default function Avaliacao() {
 
   const handleDelete = async (id: number) => {
     try {
-      await fetch(`http://localhost:8080/avaliacao/${id}`, {
+  await fetch(`http://0.0.0.0:8080/avaliacao/${id}`, {
         method: "DELETE",
       });
       setLista(lista.filter(avaliacao => avaliacao.idAvaliacao !== id));

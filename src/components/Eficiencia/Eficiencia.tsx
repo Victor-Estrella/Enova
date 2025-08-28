@@ -17,7 +17,7 @@ export default function Eficiencia({ idEnergia }: Props) {
     const eficiencia = (Number(producao) / Number(consumo)) * 100;
   
     try {
-      const response = await fetch("http://localhost:8080/analise", {
+  const response = await fetch("http://0.0.0.0:8080/analise", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

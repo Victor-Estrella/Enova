@@ -23,7 +23,7 @@ export default function Login() {
     e.preventDefault();
     if (validateLogin()) {
       try {
-        const response = await fetch("http://localhost:8080/usuario");
+  const response = await fetch("http://0.0.0.0:8080/usuario");
         if (!response.ok) {
           throw new Error("Erro ao buscar dados");
         }

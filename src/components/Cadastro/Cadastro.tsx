@@ -32,7 +32,7 @@ export default function Cadastro() {
 
     if (validarRegistro()) {
       try {
-        const response = await fetch("http://localhost:8080/usuario", {
+  const response = await fetch("http://0.0.0.0:8080/usuario", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -19,7 +19,7 @@ export default function SistemaEnergiaForm({ sistema }: { sistema?: TipoEnergia 
 
   const fetchSistema = async () => {
     try {
-      const response = await fetch('http://localhost:8080/sistema');
+  const response = await fetch('http://0.0.0.0:8080/sistema');
       if (!response.ok) throw new Error('Erro ao carregar os sistemas.');
       const data = await response.json();
       setSistemas(data);
@@ -42,7 +42,7 @@ export default function SistemaEnergiaForm({ sistema }: { sistema?: TipoEnergia 
 
     try {
       if (editingIndex !== null) {
-        const response = await fetch(`http://localhost:8080/sistema/${formData.idEnergia}`, {
+  const response = await fetch(`http://0.0.0.0:8080/sistema/${formData.idEnergia}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ export default function SistemaEnergiaForm({ sistema }: { sistema?: TipoEnergia 
         });
         if (!response.ok) throw new Error('Erro ao atualizar o sistema.');
       } else {
-        const response = await fetch('http://localhost:8080/sistema', {
+  const response = await fetch('http://0.0.0.0:8080/sistema', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -91,7 +91,7 @@ export default function SistemaEnergiaForm({ sistema }: { sistema?: TipoEnergia 
   const deletarSistema = async (index: number) => {
     const deletaSistema = sistemas[index];
     try {
-      const response = await fetch(`http://localhost:8080/sistema/${deletaSistema.idEnergia}`, {
+  const response = await fetch(`http://0.0.0.0:8080/sistema/${deletaSistema.idEnergia}`, {
         method: 'DELETE',
       });
       if (!response.ok) throw new Error('Erro ao deletar o sistema.');
