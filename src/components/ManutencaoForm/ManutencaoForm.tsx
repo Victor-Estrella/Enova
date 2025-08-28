@@ -28,7 +28,7 @@ export default function ManutencaoForm({ idEnergia }: Props) {
       }
   
       try {
-          const response = await fetch("http://0.0.0.0:8080/manutencao", {
+          const response = await fetch("http://enova-java:8080/manutencao", {
               method: "POST",
               headers: {
                   "Content-Type": "application/json",
