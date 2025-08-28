@@ -31,6 +31,7 @@ export default function SistemaEnergiaForm({ sistema }: { sistema?: TipoEnergia 
   };
 
   useEffect(() => {
+    console.log('NEXT_PUBLIC_API_JAVA (client):', process.env.NEXT_PUBLIC_API_JAVA);
     fetchSistema();
   }, [fetchSistema]);
 
