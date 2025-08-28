@@ -25,13 +25,15 @@ ChartJS.register(
   Legend
 );
 
+const apiPython = process.env.NEXT_PUBLIC_API_PYTHON || "http://localhost:5000";
+
 export default function SolarReport() {
 
   const [dados, setDados] = useState<PythonDados | null>(null);
 
   useEffect(() => {
     // Busca os dados da API Flask
-    fetch("http://localhost:5000/solar")
+    fetch(`${apiPython}/solar`)
       .then((response) => response.json())
       .then((data) => setDados(data))
       .catch((error) => console.error("Erro ao buscar dados:", error));

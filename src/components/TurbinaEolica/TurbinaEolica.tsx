@@ -18,7 +18,8 @@ export default function EnergiaSolar() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("http://localhost:5000/eolica");
+                const apiPython = process.env.NEXT_PUBLIC_API_PYTHON || "http://localhost:5000";
+                const response = await fetch(`${apiPython}/eolica`);
                 if (!response.ok) {
                     throw new Error(`Erro na API: ${response.statusText}`);
                 }

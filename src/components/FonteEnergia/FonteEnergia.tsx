@@ -5,6 +5,7 @@ import Solar from '../../../public/img/solar.svg';
 import Biomassa from '../../../public/img/biomassa.jpg';
 import Geotermica from '../../../public/img/geotermica.webp';
 
+
 export default function FonteEnergia() {
   return (
     <section className="flex flex-col items-center my-12 mb-24 min-h-screen" id="fontes">

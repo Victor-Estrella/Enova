@@ -2,6 +2,8 @@
 import { Props } from "@/type";
 import { useState } from "react";
 
+const apiJava = process.env.NEXT_PUBLIC_API_JAVA || "http://localhost:8080";
+
 export default function ManutencaoForm({ idEnergia }: Props) {
     const [ultimaManutencao, setUltimaManutencao] = useState<string>("");
     const [tipoManutencao, setTipoManutencao] = useState<string>("");
@@ -28,7 +30,7 @@ export default function ManutencaoForm({ idEnergia }: Props) {
       }
   
       try {
-          const response = await fetch("http://enova-java:8080/manutencao", {
+          const response = await fetch(`${apiJava}/manutencao`, {
               method: "POST",
               headers: {
                   "Content-Type": "application/json",

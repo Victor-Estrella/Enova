@@ -12,10 +12,12 @@ export default function SistemaDetalhes() {
     const [eficiencia, setEficiencia] = useState<TipoEficiencia | null>(null);
     const [manutencoes, setManutencoes] = useState<TipoManutencao[]>([]);
 
+    const apiJava = process.env.NEXT_PUBLIC_API_JAVA || "http://localhost:8080";
+
     // Função para buscar os detalhes do sistema
     const fetchSistemaDetalhes = async (id: string) => {
         try {
-            const response = await fetch(`http://enova-java:8080/sistema/${id}`);
+            const response = await fetch(`${apiJava}/sistema/${id}`);
             if (!response.ok) throw new Error("Erro ao carregar os detalhes do sistema.");
             const data = await response.json();
             setSistema(data);
@@ -27,7 +29,7 @@ export default function SistemaDetalhes() {
     // Função para buscar a eficiência
     const fetchEficiencia = async (idEnergia: string) => {
         try {
-            const response = await fetch(`http://enova-java:8080/analise/energia/${idEnergia}`);
+            const response = await fetch(`${apiJava}/analise/energia/${idEnergia}`);
             if (!response.ok) throw new Error("Erro ao carregar a eficiência.");
             const data = await response.json();
             setEficiencia(data[0]); // Define a eficiência mais recente
@@ -39,7 +41,7 @@ export default function SistemaDetalhes() {
     // Função para buscar as manutenções
     const fetchManutencoes = async (idEnergia: string) => {
         try {
-            const response = await fetch(`http://enova-java:8080/manutencao/energia/${idEnergia}`);
+            const response = await fetch(`${apiJava}/manutencao/energia/${idEnergia}`);
             if (!response.ok) throw new Error("Erro ao carregar as manutenções.");
             const data = await response.json();
             setManutencoes(data); // Define as manutenções

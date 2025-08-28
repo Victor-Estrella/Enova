@@ -7,6 +7,7 @@ import Header from "@/components/Header/Header";
 
 ChartJS.register(BarElement, LineElement, CategoryScale, LinearScale, Tooltip, Legend, Title);
 
+
 export default function Manutencao() {
     const [relatorio, setRelatorio] = useState({
         manutencoes: "",

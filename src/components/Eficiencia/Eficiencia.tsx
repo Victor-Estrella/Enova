@@ -15,9 +15,10 @@ export default function Eficiencia({ idEnergia }: Props) {
     }
   
     const eficiencia = (Number(producao) / Number(consumo)) * 100;
+    const apiJava = process.env.NEXT_PUBLIC_API_JAVA || "http://localhost:8080";
   
     try {
-  const response = await fetch("http://enova-java:8080/analise", {
+      const response = await fetch(`${apiJava}/analise`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

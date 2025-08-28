@@ -17,9 +17,11 @@ export default function SistemaEnergiaForm({ sistema }: { sistema?: TipoEnergia 
   const [sistemas, setSistemas] = useState<TipoEnergia[]>([]);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
 
+  const apiJava = process.env.NEXT_PUBLIC_API_JAVA || "http://localhost:8080";
+
   const fetchSistema = async () => {
     try {
-  const response = await fetch('http://enova-java:8080/sistema');
+      const response = await fetch(`${apiJava}/sistema`);
       if (!response.ok) throw new Error('Erro ao carregar os sistemas.');
       const data = await response.json();
       setSistemas(data);
@@ -42,7 +44,7 @@ export default function SistemaEnergiaForm({ sistema }: { sistema?: TipoEnergia 
 
     try {
       if (editingIndex !== null) {
-  const response = await fetch(`http://enova-java:8080/sistema/${formData.idEnergia}`, {
+        const response = await fetch(`${apiJava}/sistema/${formData.idEnergia}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -51,7 +53,7 @@ export default function SistemaEnergiaForm({ sistema }: { sistema?: TipoEnergia 
         });
         if (!response.ok) throw new Error('Erro ao atualizar o sistema.');
       } else {
-  const response = await fetch('http://enova-java:8080/sistema', {
+        const response = await fetch(`${apiJava}/sistema`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -91,7 +93,7 @@ export default function SistemaEnergiaForm({ sistema }: { sistema?: TipoEnergia 
   const deletarSistema = async (index: number) => {
     const deletaSistema = sistemas[index];
     try {
-  const response = await fetch(`http://enova-java:8080/sistema/${deletaSistema.idEnergia}`, {
+      const response = await fetch(`${apiJava}/sistema/${deletaSistema.idEnergia}`, {
         method: 'DELETE',
       });
       if (!response.ok) throw new Error('Erro ao deletar o sistema.');
