@@ -32,7 +32,7 @@ export default function SistemaEnergiaForm({ sistema }: { sistema?: TipoEnergia 
 
   useEffect(() => {
     fetchSistema();
-  }, []);
+  }, [fetchSistema]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;

@@ -17,8 +17,7 @@ export default function Avaliacao() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${apiJava}/avaliacao`);
-        const result = await response.json();
+        const result = await (await fetch(`${apiJava}/avaliacao`)).json();
         setLista(result);
       } catch (error) {
         console.error("Erro ao buscar dados:", error);
@@ -35,7 +34,7 @@ export default function Avaliacao() {
     handleResize();
 
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [apiJava]);
 
   const renderStars = (avaliacao: number) => {
     return Array.from({ length: avaliacao }, (_, i) => (
@@ -58,7 +57,7 @@ export default function Avaliacao() {
 
     try {
       if (editandoId !== null) {
-        const response = await fetch(`${apiJava}/avaliacao/${editandoId}`, {
+        await fetch(`${apiJava}/avaliacao/${editandoId}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newAvaliacao),

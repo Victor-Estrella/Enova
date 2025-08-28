@@ -7,7 +7,6 @@ import Header from "@/components/Header/Header";
 
 ChartJS.register(BarElement, LineElement, CategoryScale, LinearScale, Tooltip, Legend, Title);
 
-
 export default function Manutencao() {
     const [relatorio, setRelatorio] = useState({
         manutencoes: "",
@@ -39,7 +38,7 @@ export default function Manutencao() {
                 ...dados.frequencias
             )} manutenções/mês em ${dados.datas[dados.frequencias.indexOf(Math.max(...dados.frequencias))]}.`,
         });
-    }, []);
+    }, [dados.custos, dados.datas, dados.frequencias, dados.manutencoes]);
 
     // Configurações dos gráficos
     const manutencoesData = {

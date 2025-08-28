@@ -56,7 +56,7 @@ export default function SistemaDetalhes() {
             fetchEficiencia(id as string);
             fetchManutencoes(id as string);
         }
-    }, [id]);
+    }, [id, fetchSistemaDetalhes, fetchEficiencia, fetchManutencoes]);
 
     const ajustarDataParaLocal = (dataAtual: string) => {
         const data = new Date(dataAtual);
