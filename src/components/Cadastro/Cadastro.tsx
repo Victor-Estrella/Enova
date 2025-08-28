@@ -54,6 +54,7 @@ export default function Cadastro() {
         const responseText = await response.text();
         if (responseText) {
           const data = JSON.parse(responseText);
+          console.log("Usuário cadastrado com sucesso:", data);
         }
 
         router.push("/login");

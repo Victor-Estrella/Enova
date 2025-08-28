@@ -52,47 +52,11 @@ export default function SistemaDetalhes() {
 
     useEffect(() => {
         if (id) {
-            // Função para buscar os detalhes do sistema
-            const fetchSistemaDetalhes = async (id: string) => {
-                try {
-                    const response = await fetch(`${apiJava}/sistema/${id}`);
-                    if (!response.ok) throw new Error("Erro ao carregar os detalhes do sistema.");
-                    const data = await response.json();
-                    setSistema(data);
-                } catch (error) {
-                    console.error("Erro:", error);
-                }
-            };
-
-            // Função para buscar a eficiência
-            const fetchEficiencia = async (idEnergia: string) => {
-                try {
-                    const response = await fetch(`${apiJava}/analise/energia/${idEnergia}`);
-                    if (!response.ok) throw new Error("Erro ao carregar a eficiência.");
-                    const data = await response.json();
-                    setEficiencia(data[0]); // Define a eficiência mais recente
-                } catch (error) {
-                    console.error("Erro ao buscar a eficiência:", error);
-                }
-            };
-
-            // Função para buscar as manutenções
-            const fetchManutencoes = async (idEnergia: string) => {
-                try {
-                    const response = await fetch(`${apiJava}/manutencao/energia/${idEnergia}`);
-                    if (!response.ok) throw new Error("Erro ao carregar as manutenções.");
-                    const data = await response.json();
-                    setManutencoes(data); // Define as manutenções
-                } catch (error) {
-                    console.error("Erro ao buscar as manutenções:", error);
-                }
-            };
-
             fetchSistemaDetalhes(id as string);
             fetchEficiencia(id as string);
             fetchManutencoes(id as string);
         }
-    }, [id]);
+    }, [id, fetchSistemaDetalhes, fetchEficiencia, fetchManutencoes]);
 
     const ajustarDataParaLocal = (dataAtual: string) => {
         const data = new Date(dataAtual);
